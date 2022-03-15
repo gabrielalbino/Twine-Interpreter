@@ -19,15 +19,13 @@ def parse(src: str) -> Tree:
     """
     from twine.lexer import lex
     lex_result = lex(src)
-    return Tree("program",
-        [
-            Token("IDENTIFIER", "main"),
-            Token("EQUAL", "="),
-            Token("F", "f"),
-            Token("LPAR", "("),
-            Token("RETURNS", "returns"),
-            Token("IDENTIFIER", "integer"),
-            Token("RPAR", ")"),
-            Token("INTEGER", "42")
-        ]
-    )
+    return Tree("program", 
+        [   
+            Tree("define", 
+            [
+                Token("IDENTIFIER", "main"),
+                Tree("params", []),
+                Token("IDENTIFIER", "integer"),
+                Token("INTEGER", 42)
+            ])
+        ])

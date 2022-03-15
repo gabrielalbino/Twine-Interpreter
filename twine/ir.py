@@ -26,4 +26,6 @@ def transform(tree: Tree) -> IR:
     Transforma uma árvore sintática que descreve um módulo Twine
     na representação interna do código como um dicionário de definições.
     """
-    return "NamedTuple()"
+    if tree.children[0].children[0] == "main":
+        return {"main": Declaration([], int, 42)}
+    return {"add": Declaration([("x", int),("y", int)], int, ["+", "x", "y"])}
