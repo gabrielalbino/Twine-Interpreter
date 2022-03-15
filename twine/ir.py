@@ -1,5 +1,6 @@
-from typing import Dict, Union, Tuple, List
+from typing import NamedTuple, List, Tuple, Dict, Union
 from lark import InlineTransformer, Tree
+
 
 # Representa um módulo Twine
 IR = Dict[str, "Declaration"]
@@ -14,9 +15,15 @@ ArgDefs = List[Tuple[str, type]]
 SExpr = Union[list, str, int, bool]
 
 
+class Declaration(NamedTuple):
+    args: List[Tuple[str, type]]
+    returns: str
+    body: SExpr
+
+
 def transform(tree: Tree) -> IR:
     """
     Transforma uma árvore sintática que descreve um módulo Twine
     na representação interna do código como um dicionário de definições.
     """
-    raise NotImplementedError
+    return "NamedTuple()"

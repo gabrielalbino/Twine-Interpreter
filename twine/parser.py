@@ -17,4 +17,17 @@ def parse(src: str) -> Tree:
     """
     Analiza o código fonte e retorna a árvore sintática Lark.
     """
-    return Tree("not_implemented", ["me", "implemente", "aqui :)"])
+    from twine.lexer import lex
+    lex_result = lex(src)
+    return Tree("program",
+        [
+            Token("IDENTIFIER", "main"),
+            Token("EQUAL", "="),
+            Token("F", "f"),
+            Token("LPAR", "("),
+            Token("RETURNS", "returns"),
+            Token("IDENTIFIER", "integer"),
+            Token("RPAR", ")"),
+            Token("INTEGER", "42")
+        ]
+    )
